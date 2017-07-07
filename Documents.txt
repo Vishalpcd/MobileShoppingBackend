@@ -1,0 +1,5 @@
+BackendDTO:: Is a Data Trnsfer Object.It transfers the Data from application to DATA BASE and  from DATA BASE to Application
+BcakendDAO:: DAO is Data Access Object.It shows that in what pattern the data will be stored in Data Base.
+BackendDAOImpl::DAO IMPL is Data Access Object Implementation that means it will  
+				implement the DAO Interface that means the calling the function and initialization 
+				and storing the data in the pattern is occurs in this class. 
