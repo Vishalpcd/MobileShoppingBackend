@@ -1,12 +1,5 @@
 package com.niit.MobileShoppingBackend.DTO;
-
-public class Category {
-	/* private fields*/
-	private int id;//id of the category
-	private String Name;//name  of the category
-	private String  Description;//description of the category
-	private String ImageUrl;//immage url for the category
-	private boolean Active;//category is avilable or not 
+public class Category { 
 	public int getId() {
 		return id;
 	}
@@ -14,28 +7,35 @@ public class Category {
 		this.id = id;
 	}
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 	public String getDescription() {
-		return Description;
+		return description;
 	}
 	public void setDescription(String description) {
-		Description = description;
+		this.description = description;
 	}
 	public String getImageUrl() {
-		return ImageUrl;
+		return imageUrl;
 	}
 	public void setImageUrl(String imageUrl) {
-		ImageUrl = imageUrl;
+		this.imageUrl = imageUrl;
 	}
 	public boolean isActive() {
-		return Active;
+		return active;
 	}
 	public void setActive(boolean active) {
-		Active = active;
+		this.active = active;
 	}
+
+	/* private fields*/
+	private int id;//id of the category
+	private String name;//name  of the category
+	private String  description;//description of the category
+	private String imageUrl;//immage url for the category
+	private boolean active;//category is avilable or not
 
 }

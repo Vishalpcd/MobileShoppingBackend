@@ -12,6 +12,8 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!-- we need to define that the backend project is also using the same vaersion and for Repository annotation to tell that the DAOIMPL that all the thhings will be manage by spring framework -->
+    <spring.version>4.3.6.RELEASE</spring.version>
   </properties>
 
   <dependencies>
@@ -21,6 +23,13 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <!-- adding the spring context dependency to backend to show that it is a backend -->
+    <dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
+		</dependency>
+    
   </dependencies>
   <build>
 	<plugins>
