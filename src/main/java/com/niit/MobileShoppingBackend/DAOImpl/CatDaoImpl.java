@@ -3,12 +3,17 @@ package com.niit.MobileShoppingBackend.DAOImpl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.SessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.niit.MobileShoppingBackend.DAO.CatDao;
 import com.niit.MobileShoppingBackend.DTO.Category;
 @Repository("catDao")
 public class CatDaoImpl implements CatDao {
+	@Autowired//autowiring
+	private SessionFactory sessionFactory;
 	/*adding category in the static ArrayList for testing purpose*/
 	private static List<Category> Categories=new ArrayList<Category>();
 	static{
@@ -53,6 +58,22 @@ public class CatDaoImpl implements CatDao {
 				return category;
 		}
 		return null;
+	}
+	@Override
+	@Transactional//to manage the below transaction
+	public boolean add(Category category) {
+		try{
+			//add the category to the data base table
+			sessionFactory.getCurrentSession().persist(category);//it will persist the category to the database table
+			return true;
+		}
+		catch(Exception ex)
+		{
+			
+			ex.printStackTrace();
+			return false;
+		}
+		
 	}
 
 }

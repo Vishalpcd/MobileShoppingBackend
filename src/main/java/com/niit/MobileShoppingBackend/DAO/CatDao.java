@@ -7,6 +7,7 @@ import com.niit.MobileShoppingBackend.DTO.Category;
 public interface CatDao {
 	/* declaring that the all the variable values of the category 
 	 * class will be kept in list */
+	boolean add(Category category);
 	List<Category> list();
 	Category get(int id);
 

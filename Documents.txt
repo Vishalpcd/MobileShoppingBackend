@@ -8,4 +8,13 @@ Hibernaateconfig is a class for configuration of the database that we are using 
 There are three annotations in the hibernate configuration
 1) @Configuartion:- This  annotation indicates that the all the configuration related  material will be here in this class .
 2) @ComponentScane(basepackage={""}):-It shows that all the entity classes required for this project are in this package.
-3)@EnableTransactionManagement:-It will enable that all the data will be stored in the data base in the tabled form and data variable will  come from the dto classes.It will autometically create the query of the data base for any request which ever commanded by the user of the  software.
+3)@EnableTransactionManagement:-It will enable that all the data will be stored in the data base in the tabled form and data variable will  come from the dto classes.
+    It will autometically create the query of the data base for any request which ever commanded by the user of the  software.
+===========There are three Beans in the HIbernateConfig class=======
+1)DataSource:-
+		It will provide all the basic information of your data base in this bean.
+2)SessionFactory:
+		It will use DataSource and It will call the hibernateProperties method which has all required properties in this method.
+Then it has the scanpackages method for the scanning the entity from that perticular package.
+Method is getHibernateProperties for hibernate properties it has dialect,show_sql,show_format. 
+3)HibernateTransactionManager:- It will use SessionFactory.
