@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.SessionFactory;
+import org.hibernate.id.IncrementGenerator;
+import org.hibernate.query.Query;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -11,69 +13,73 @@ import org.springframework.transaction.annotation.Transactional;
 import com.niit.MobileShoppingBackend.DAO.CatDao;
 import com.niit.MobileShoppingBackend.DTO.Category;
 @Repository("catDao")
+@Transactional//beacuse now everythisng in the class is going to persist in db thats why it used at the class level
 public class CatDaoImpl implements CatDao {
-	@Autowired//autowiring
+	//@Autowired annotation will generate getters and setters
+	@Autowired
+	//SessionFactory will do all task that would be given to the application
 	private SessionFactory sessionFactory;
 	/*adding category in the static ArrayList for testing purpose*/
-	private static List<Category> Categories=new ArrayList<Category>();
-	static{
-		//adding values to the category class by calling there get and set method using object 
-		Category cat=new Category();
-		cat.setId(1);
-		cat.setName("NewArrival");
-		cat.setDescription("In This Category user will find some new mobiles which are launched earlier");
-		cat.setImageUrl("cat_1.png");
-		//adding above values in the ArrayList 
-		Categories.add(cat);
-	}
-	static {
-		//adding second category
-		//adding values to the Category class by calling there get annd set method using object  of the Category class
-		Category cat=new Category();
-		cat.setId(2);
-		cat.setName("OldMobiles");
-		cat.setDescription("This mobiles are very rare to find at aywhere because these  are old mobiles ");
-		cat.setImageUrl("cat_2.png");
-		Categories.add(cat);
 	
-	}
-	static {
-		//adding Third category
-		Category cat=new Category();
-		cat.setId(3);
-		cat.setName("Comingsoon");
-		cat.setDescription("This category contains all the mobiles that are going to launch in this website");
-		cat.setImageUrl("cat_3.png");
-		Categories.add(cat);
-	}
 	@Override
 	public List<Category> list() {
-		return Categories;//returns All the Categories in the list 
+		String selectActiveCategory="FROM Category WHERE active=:active";//hibernate query language for listing data whose value is active
+		//to define the query language and passsing the query string value to the hibernate 
+		Query query=sessionFactory.getCurrentSession().createQuery(selectActiveCategory);
+		//to set the value of active 
+		query.setParameter("active", true);
+		return query.getResultList();//returns All the Categories in the list 
 	}
 	@Override
 	public Category get(int id) {
-		for(Category category:Categories)
-		{
-			if(category.getId()==id)
-				return category;
-		}
-		return null;
+		//it will return id of integer type from the Category class
+		return sessionFactory.getCurrentSession().get(Category.class,Integer.valueOf(id));
 	}
 	@Override
-	@Transactional//to manage the below transaction
-	public boolean add(Category category) {
-		try{
-			//add the category to the data base table
-			sessionFactory.getCurrentSession().persist(category);//it will persist the category to the database table
+	public boolean add(Category cat) {
+		try
+		{
+			//it  will return current session 
+			sessionFactory.getCurrentSession().persist(cat);
 			return true;
 		}
 		catch(Exception ex)
 		{
-			
 			ex.printStackTrace();
 			return false;
 		}
-		
+	}
+	@Override
+	public boolean delete(Category cat) {
+		cat.setActive(false);//now it will not delete the item from the table simply it update set active as false and then it will do just check if it is returning true if yes then test is pass 
+		try
+		{
+			//it  will return current session i.e. it will return DeleteCategory
+			//it will update the cat object of the category class to the data base 
+			sessionFactory.getCurrentSession().update(cat);//now update the category table  if we write delete here then it will delete that row 
+			return true;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return false;
+		}
+	}
+	//test case for updating product
+	@Override
+	public boolean update(Category cat) {
+		try
+		{
+			//it  will return current session i.e. it will return UpdateCategory
+			//it will update the cat object of the category class to the data base 
+			sessionFactory.getCurrentSession().update(cat);
+			return true;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return false;
+		}
 	}
 
 }

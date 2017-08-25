@@ -18,3 +18,9 @@ There are three annotations in the hibernate configuration
 Then it has the scanpackages method for the scanning the entity from that perticular package.
 Method is getHibernateProperties for hibernate properties it has dialect,show_sql,show_format. 
 3)HibernateTransactionManager:- It will use SessionFactory.
+
+Junit test:
+=========
+	1) In this we will  change the the version of the Junit of the backend project to 4.12.
+	2)Now I have added one class to backend project in src/test/java folder where the packae name is com.niit.MobileShoppingBackend.test and the class name CategoryTestCase.java
+	3)we will add AnnotationConfigApplicationContext

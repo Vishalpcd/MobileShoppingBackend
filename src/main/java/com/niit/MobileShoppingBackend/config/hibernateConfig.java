@@ -35,7 +35,7 @@ public class hibernateConfig {
 	}
 	//SessionFactory bean
 	@Bean
-	public SessionFactory getSessionFactory(DataSource dataSource)//it will DataSource
+	public SessionFactory getSessionFactory(DataSource dataSource)//it will get DataSource
 	{
 		LocalSessionFactoryBuilder builder=new LocalSessionFactoryBuilder(dataSource);
 		//providing the hibernate properties
