@@ -24,3 +24,22 @@ Junit test:
 	1) In this we will  change the the version of the Junit of the backend project to 4.12.
 	2)Now I have added one class to backend project in src/test/java folder where the packae name is com.niit.MobileShoppingBackend.test and the class name CategoryTestCase.java
 	3)we will add AnnotationConfigApplicationContext
+
+
+
+=============
+FOR PRODUCT =
+=============
+
+STEP 1:- First we need to open a product class in DTO directory of our backend project.
+STEP 2:- Then will add all the private fields in the data base 
+STEP 3:- Now add Getters and setters for accessing the value of the private fields
+STEP 4:- Add @Entity at the above of the class so that we can indicate that this is the class that is going give the  data for our product table.
+STEP 5:- Add @Id above  the private int id field to indicate that the value of the id is primary key for the database 
+STEP 6:- add @GeneratedValue(strategy=GeneratiionType.IDENTITY) to increase the primary key value i.e id autometically and for the code column we need to create a randome code for that this.code="MS"+UUID.randomUUID().toString().substring(26).toUpperCase(); in the product construcrtor.
+STEP 7:- Save the Product.java
+STEP 8:- Create ProductDAO interface in DAO package.
+STEP 9:- Then create boolean abstract methods for crud operations i.e boolean add(Product product),boolean delete(Product product) and update(Product product) note add Product class and there object as you want to name it .
+STEP 10:- Create a class ProductDaoImpl in DaoImpl packaage which implements ProductDAO interface
+STEP 11:- set the all the implemented method to a concrete method add hibernate query language.
+step 12:- set the method dao classes as autowired.

@@ -1,11 +1,10 @@
 package com.niit.MobileShoppingBackend.DTO;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//To indicate that this is the class that is going give the  data for our category table @Entity is used below
+//To indicate that this is the class that is going give the  data for our category table thats why  @Entity is used below
 @Entity
 public class Category { 
 	public int getId() {
