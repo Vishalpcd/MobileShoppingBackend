@@ -18,31 +18,57 @@ public class ProductDaoImpl implements ProductDAO {
 	//it indicates the this is the class which is going to autowire
 	@Autowired
 private SessionFactory sessionFactory;
+	//for adding the data 
 	@Override
 	public boolean add(Product product) {
-		// TODO Auto-generated method stub
-		return false;
+		try{
+			sessionFactory.getCurrentSession().persist(product);
+			return true;
+			
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return false;
+		}
+		
 	}
 
 	@Override
 	public boolean delete(Product product) {
-		// TODO Auto-generated method stub
+	product.setActive(false);
+	try
+	{
+		sessionFactory.getCurrentSession().update(product);
+		return true;
+	}
+	catch(Exception ex)
+	{
+		ex.printStackTrace();
 		return false;
+	}
 	}
 
 	@Override
 	public boolean update(Product product) {
-		// TODO Auto-generated method stub
-		return false;
+	
+		try
+		{
+			sessionFactory.getCurrentSession().update(product);
+			return true;
+		}
+		catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return false;
+		}
+		
 	}
 
 	@Override
 	public List<Product> list() {
-		String listProduct="FROM Product WHERE is_active=:active";
-		Query  query=sessionFactory.getCurrentSession().createQuery(listProduct);
-		query.setParameter("active", true);
-		return query.getResultList();
-	}
+		return sessionFactory.getCurrentSession().createQuery("FROM Product",Product.class).getResultList();
+				}
 
 	@Override
 	public Product get(int id) {
@@ -51,29 +77,29 @@ private SessionFactory sessionFactory;
 	}
 
 		@Override
-	public List<Product> listActiveProductsByCategory(int categoryid) {
-		String listactiveProductsByCategory="FROM Product WHERE category_id=:categoryid AND is_active=:active";
+	public List<Product> listActiveProductsByCategory(int categoryId) {
+		String listactiveProductsByCategory="FROM Product WHERE categoryId=:categoryId AND active=:active";
 		Query query=sessionFactory.getCurrentSession().createQuery(listactiveProductsByCategory);
-		query.setParameter(categoryid,categoryid );
+		query.setParameter(categoryId,categoryId );
 		query.setParameter("active", true);
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Product> listAcitveProductsByBrandId(int brandid) {
-		String listactiveProductByBrandId="FROM Product WHERE brandid=:brandid AND is_active=:active";
+	public List<Product> listAcitveProductsByBrandId(int brandId) {
+		String listactiveProductByBrandId="FROM Product WHERE brandId=:brandId AND active=:active";
 		Query query=sessionFactory.getCurrentSession().createQuery(listactiveProductByBrandId);
-		query.setParameter(brandid, brandid);
+		query.setParameter(brandId, brandId);
 		query.setParameter("active", true);
 		return query.getResultList();
 	}
 
 	@Override
-	public List<Product> listActiveProductsByTypeId(int typeid) {
+	public List<Product> listActiveProductsByTypeId(int typeId) {
 	
-		String listactiveProductByTypeId="FROM Product WHERE typeid=:typeid AND is_active=:active";
+		String listactiveProductByTypeId="FROM Product WHERE typeId=:typeId AND active=:active";
 		Query query=sessionFactory.getCurrentSession().createQuery(listactiveProductByTypeId);
-		query.setParameter(typeid, typeid);
+		query.setParameter(typeId, typeId);
 		query.setParameter("active", true);
 		return query.getResultList();
 	}

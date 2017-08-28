@@ -16,9 +16,9 @@ public interface ProductDAO {
 	boolean update(Product product);
 	List<Product> list();//it will return list of the product
 	Product get(int id);//it will return all the product id 
-	List<Product> listActiveProductsByCategory(int categoryid);//it will return all the products by the category id 
-	List<Product> listAcitveProductsByBrandId(int brandid);//it will return all the products by the brand id
-	List<Product> listActiveProductsByTypeId(int typeid);//it will return all the active products by the type id
+	List<Product> listActiveProductsByCategory(int categoryId);//it will return all the products by the category id 
+	List<Product> listAcitveProductsByBrandId(int brandId);//it will return all the products by the brand id
+	List<Product> listActiveProductsByTypeId(int typeId);//it will return all the active products by the type id
 	
 
 }

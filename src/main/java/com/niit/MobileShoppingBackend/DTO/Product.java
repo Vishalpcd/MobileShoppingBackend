@@ -25,6 +25,13 @@ public class Product {
 	public void setCode(String code) {
 		this.code = code;
 	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getBrand() {
 		return brand;
 	}
@@ -37,11 +44,11 @@ public class Product {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public float getUnit_price() {
-		return unit_price;
+	public double getUnitPrice() {
+		return unitPrice;
 	}
-	public void setUnit_price(float unit_price) {
-		this.unit_price = unit_price;
+	public void setUnitPrice(double unitPrice) {
+		this.unitPrice = unitPrice;
 	}
 	public int getQuantity() {
 		return quantity;
@@ -49,23 +56,36 @@ public class Product {
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-	public boolean isIs_active() {
-		return is_active;
+	public boolean isActive() {
+		return active;
 	}
-	public void setIs_active(boolean is_active) {
-		this.is_active = is_active;
+	public void setActive(boolean active) {
+		this.active = active;
 	}
-	public int getCategory_id() {
-		return category_id;
+	public int getCategoryId() {
+		return categoryId;
 	}
-	public void setCategory_id(int category_id) {
-		this.category_id = category_id;
+	public void setCategoryId(int categoryId) {
+		this.categoryId = categoryId;
 	}
-	public int getSupplier_id() {
-		return supplier_id;
+	public int getSupplierId() {
+		return supplierId;
 	}
-	public void setSupplier_id(int supplier_id) {
-		this.supplier_id = supplier_id;
+	public void setSupplierId(int supplierId) {
+		this.supplierId = supplierId;
+	}
+	
+	public int getBrandId() {
+		return brandId;
+	}
+	public void setBrandId(int brandId) {
+		this.brandId = brandId;
+	}
+	public int getTypeId() {
+		return typeId;
+	}
+	public void setTypeId(int typeId) {
+		this.typeId = typeId;
 	}
 	public int getPurchases() {
 		return purchases;
@@ -81,13 +101,15 @@ public class Product {
 	}
 	
 	//for the console i.e it will return all the  value to the console while running the application
+	
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", code=" + code + ", brand=" + brand + ", description=" + description
-				+ ", unit_price=" + unit_price + ", quantity=" + quantity + ", is_active=" + is_active
-				+ ", category_id=" + category_id + ", supplier_id=" + supplier_id + ", purchases=" + purchases
-				+ ", views=" + views + "]";
+		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", brand=" + brand + ", description="
+				+ description + ", unitPrice=" + unitPrice + ", quantity=" + quantity + ", active=" + active
+				+ ", categoryId=" + categoryId + ", supplierId=" + supplierId + ", brandId=" + brandId + ", typeId="
+				+ typeId + ", purchases=" + purchases + ", views=" + views + "]";
 	}
+
 
 
 
@@ -101,13 +123,20 @@ public class Product {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String code;
+	private String name;
 	private String brand;
 	private  String description;
-	private float unit_price;
+	@Column(name="unit_price")
+	private double unitPrice;
 	private int quantity;
-	private boolean is_active;
-	private int category_id;
-	private int supplier_id;
+	@Column(name="is_active")
+	private boolean active;
+	@Column(name="category_id")
+	private int categoryId;
+	@Column(name="supplier_id")
+	private int supplierId;
+	private int brandId;
+	private int typeId;
 	private int purchases;
 	private int views;
 	
