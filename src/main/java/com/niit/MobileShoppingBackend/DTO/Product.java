@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GeneratorType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 //To indicate that this is the class that is going give the  data for our product table thats why  @Entity is used below
 @Entity
 public class Product {
@@ -125,16 +127,22 @@ public class Product {
 	private String code;
 	private String name;
 	private String brand;
+	//to say the json to ignore this field to retriev the data from the data base 
+	@JsonIgnore
 	private  String description;
 	@Column(name="unit_price")
 	private double unitPrice;
 	private int quantity;
 	@Column(name="is_active")
+	@JsonIgnore
 	private boolean active;
 	@Column(name="category_id")
+	@JsonIgnore
 	private int categoryId;
 	@Column(name="supplier_id")
+	@JsonIgnore
 	private int supplierId;
+	
 	private int brandId;
 	private int typeId;
 	private int purchases;

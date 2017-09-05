@@ -43,3 +43,4 @@ STEP 9:- Then create boolean abstract methods for crud operations i.e boolean ad
 STEP 10:- Create a class ProductDaoImpl in DaoImpl packaage which implements ProductDAO interface
 STEP 11:- set the all the implemented method to a concrete method add hibernate query language.
 step 12:- set the method dao classes as autowired.
+added data table

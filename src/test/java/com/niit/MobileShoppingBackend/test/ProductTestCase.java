@@ -53,10 +53,22 @@ public class ProductTestCase {
 		assertEquals("Something went wrong while retrieving the data by the id ","Samsung",product.getBrand());
 	}
 	*/
+	/*
 	@Test
 	public void testListProduct()
 	{
-		assertEquals("Successfully fetched the list of  categories which are active from the DB",5,productDao.list().size());
+		assertEquals("Successfully fetched the list of  categories which are active from the DB",3,productDao.list().size());
 
 	}
+	*/
+	
+	/*
+	@Test
+	public void testListActiveProductsByCategory()
+	{
+		assertEquals("Successfully fetched the list of  categories which are active from the DB",1,productDao.listActiveProductsByCategory(3).size());
+		assertEquals("Successfully fetched the list of  categories which are active from the DB",2,productDao.listActiveProductsByCategory(2).size());
+	}
+	*/
+	
 }

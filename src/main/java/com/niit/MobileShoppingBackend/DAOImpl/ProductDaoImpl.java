@@ -78,30 +78,37 @@ private SessionFactory sessionFactory;
 
 		@Override
 	public List<Product> listActiveProductsByCategory(int categoryId) {
-		String listactiveProductsByCategory="FROM Product WHERE categoryId=:categoryId AND active=:active";
-		Query query=sessionFactory.getCurrentSession().createQuery(listactiveProductsByCategory);
-		query.setParameter(categoryId,categoryId );
-		query.setParameter("active", true);
-		return query.getResultList();
+		String listactiveProductsByCategory="FROM Product WHERE active=:active And categoryId=:categoryId";
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(listactiveProductsByCategory,Product.class)
+				.setParameter("active", true)
+				.setParameter("categoryId",categoryId )
+				.getResultList();
 	}
 
 	@Override
 	public List<Product> listAcitveProductsByBrandId(int brandId) {
-		String listactiveProductByBrandId="FROM Product WHERE brandId=:brandId AND active=:active";
-		Query query=sessionFactory.getCurrentSession().createQuery(listactiveProductByBrandId);
-		query.setParameter(brandId, brandId);
-		query.setParameter("active", true);
-		return query.getResultList();
+		String listactiveProductsByBrand="FROM Product WHERE active=:active And brandId=:brandId";
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(listactiveProductsByBrand,Product.class)
+				.setParameter("active", true)
+				.setParameter("brandId",brandId )
+				.getResultList();
+
 	}
 
 	@Override
 	public List<Product> listActiveProductsByTypeId(int typeId) {
-	
-		String listactiveProductByTypeId="FROM Product WHERE typeId=:typeId AND active=:active";
-		Query query=sessionFactory.getCurrentSession().createQuery(listactiveProductByTypeId);
-		query.setParameter(typeId, typeId);
-		query.setParameter("active", true);
-		return query.getResultList();
+		String listactiveProductByTypeId="FROM Product WHERE active=:active AND typeId=:typeId";
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(listactiveProductByTypeId,Product.class)
+				.setParameter("active", true)
+				.setParameter("typeId",typeId )
+				.getResultList();
+
 	}
 
 }
