@@ -10,4 +10,4 @@ CONSTRAINT pk_category_id PRIMARY KEY(id)
 
 
 );
-select * from category
+select * from category   
