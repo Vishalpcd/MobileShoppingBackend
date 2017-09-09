@@ -43,4 +43,40 @@ STEP 9:- Then create boolean abstract methods for crud operations i.e boolean ad
 STEP 10:- Create a class ProductDaoImpl in DaoImpl packaage which implements ProductDAO interface
 STEP 11:- set the all the implemented method to a concrete method add hibernate query language.
 step 12:- set the method dao classes as autowired.
-added data table
+
+
+
+
+
+
+Data table
+===========
+Add data table file that download in the project from the datatables.net
+Add all the files in the script tag
+Now add the code for the getting the table myApp.js
+Add the bootsrap css file and bootstrap java script file.
+
+To add Actual data to the data table 
+======================================
+Add ContextRoot to the DefaultPage.jsp
+Add CotegoryId to AllProducts.jsp
+
+
+
+if(window.bnd=='2')
+		{
+		jsonUrl='/MobileShopping/json/data/brand/products';
+		}
+		else
+			{
+			jsonUrl='/MobileShopping/json/data/brand/'+window.categoryId+'/products';
+			}
+		if(window.bnd=='3')
+			{
+			jsonUrl='/MobileShopping/json/data/brand/products';
+			}
+		else
+			{
+			jsonUrl='/MobileShopping/json/data/brand/'+window.brandId+'/products';
+			}
+		
