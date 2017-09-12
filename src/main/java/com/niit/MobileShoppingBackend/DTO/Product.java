@@ -7,8 +7,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Min;
 
 import org.hibernate.annotations.GeneratorType;
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 //To indicate that this is the class that is going give the  data for our product table thats why  @Entity is used below
@@ -125,13 +127,18 @@ public class Product {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	private String code;
+	@NotBlank(message="Please enter product name ")
 	private String name;
+	@NotBlank(message="Please enter brand name")
 	private String brand;
 	//to say the json to ignore this field to retriev the data from the data base 
 	@JsonIgnore
+	@NotBlank(message="Please enter product description")
 	private  String description;
 	@Column(name="unit_price")
+	@Min(value=1,message="Please enter valid price ")
 	private double unitPrice;
+	@Min(value=1,message="Please enter valid quantity")
 	private int quantity;
 	@Column(name="is_active")
 	@JsonIgnore
