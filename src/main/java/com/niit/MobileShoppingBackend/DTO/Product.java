@@ -7,10 +7,12 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 import javax.validation.constraints.Min;
 
 import org.hibernate.annotations.GeneratorType;
 import org.hibernate.validator.constraints.NotBlank;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 //To indicate that this is the class that is going give the  data for our product table thats why  @Entity is used below
@@ -141,7 +143,6 @@ public class Product {
 	@Min(value=1,message="Please enter valid quantity")
 	private int quantity;
 	@Column(name="is_active")
-	@JsonIgnore
 	private boolean active;
 	@Column(name="category_id")
 	@JsonIgnore
@@ -154,7 +155,17 @@ public class Product {
 	private int typeId;
 	private int purchases;
 	private int views;
+	//image upload 
+	//transient annotation is used for converting the file into binary file 
+	@Transient
+	private MultipartFile file;
 	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public Product()
 	{
 		this.code="MS"+UUID.randomUUID().toString().substring(26).toUpperCase();//it will generate random code for the code to the uppercase and append it with MS  

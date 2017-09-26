@@ -5,6 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.validator.constraints.NotBlank;
 //entity annotaion for giving the hibernate sql query
 @Entity
 public class Brand {
@@ -45,7 +47,10 @@ public class Brand {
 	@Id
 	//indicating that id should be generate there value automatically by increase id value with 1
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private int id;private String name;
+	private int id;
+	@NotBlank(message="Please enter brand name ")
+	private String name;
+	@NotBlank(message="Please enter description")
 	private String description;
 	@Column(name="is_active")
 	private boolean active;

@@ -15,6 +15,8 @@ public interface ProductDAO {
 	//updating the product data of the data base 
 	boolean update(Product product);
 	List<Product> list();//it will return list of the product
+	//it will return all the active product from the products table 
+	List<Product> listActiveProduct();
 	Product get(int id);//it will return all the product id 
 	List<Product> listActiveProductsByCategory(int categoryId);//it will return all the products by the category id 
 	List<Product> listAcitveProductsByBrandId(int brandId);//it will return all the products by the brand id

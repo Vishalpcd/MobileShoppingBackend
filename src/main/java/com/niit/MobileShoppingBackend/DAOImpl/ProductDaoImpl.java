@@ -111,4 +111,15 @@ private SessionFactory sessionFactory;
 
 	}
 
+	@Override
+	public List<Product> listActiveProduct() {
+		String listActiveProducts="FROM Product WHERE active=:active";
+		
+		return sessionFactory
+				.getCurrentSession()
+				.createQuery(listActiveProducts,Product.class)
+				.setParameter("active",true)
+				.getResultList();
+	}
+
 }
