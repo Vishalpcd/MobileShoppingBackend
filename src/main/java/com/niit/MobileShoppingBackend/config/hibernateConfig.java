@@ -23,7 +23,7 @@ public class hibernateConfig {
 	private final static String DATABASE_USERNAME="MobileShopping";//username for the data base 
 	private final static String DATABASE_PASSWORD="";//password for the database username
 	//DataSource bean
-	@Bean
+	@Bean("dataSource")
 	public DataSource getDataSource(){//DataSource is a return type of the getDataSource
 		BasicDataSource dataSource=new BasicDataSource();//creating and initializing the BasicDataSource class
 		//providing the database connection information
@@ -54,7 +54,6 @@ public class hibernateConfig {
 		properties.put("hibernate.dialect", DATABASE_DIALECT);//providing the database dialect info here 
 		properties.put("hibernate.show_sql", "true");//it will be used for showing the sql query which is passing.
 		properties.put("hibernate.show_format", "true");//
-		
 		return properties;
 	}
 	//HibernateTransactionManager Bean

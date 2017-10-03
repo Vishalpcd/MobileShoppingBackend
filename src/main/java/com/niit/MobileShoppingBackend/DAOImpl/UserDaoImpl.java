@@ -69,11 +69,22 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User getEmailId(String email) {
+	public User getByEmail(String email) {
 		//get all the value of the by the email 
-		String emailQuery="SELECT email FROM User WHERE email=:email";
-		return sessionFactory.getCurrentSession().createQuery(emailQuery, User.class).setParameter("email", email).getSingleResult();
-	}
+		String selectQuery = "FROM User WHERE email = :email";		
+		try {
+			
+			return sessionFactory.getCurrentSession()
+						.createQuery(selectQuery,User.class)
+							.setParameter("email", email)
+								.getSingleResult();
+			
+		}
+		catch(Exception ex) {
+			//ex.printStackTrace();
+			return null;
+}
+}
 
 	@Override
 	public boolean add(Address address) {
@@ -154,6 +165,8 @@ public class UserDaoImpl implements UserDao {
 					return false;
 		
 	}
+
+	
 
 	
 	

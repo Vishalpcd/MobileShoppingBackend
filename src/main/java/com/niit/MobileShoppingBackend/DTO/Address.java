@@ -20,11 +20,7 @@ public class Address {
 	private String state;
 	private String road;
 	@Column(name="user_id")//data base column name 
-	private int userId;
-	
-	
-	
-	
+	private int userId;	
 	//getters and setters 
 	public int getId() {
 		return id;

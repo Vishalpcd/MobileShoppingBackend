@@ -1,10 +1,12 @@
 package com.niit.MobileShoppingBackend.DTO;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.Range;
@@ -60,7 +62,6 @@ public class User {
 	public void setContactNumber(long contactNumber) {
 		this.contactNumber = contactNumber;
 	}
-
 	
 	
 	
@@ -70,6 +71,16 @@ public class User {
 	//indicating that id should increase by 1 in every insertion of the data 
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@OneToOne(mappedBy="user",cascade=CascadeType.ALL)//it cart will react as soon as changes has been done in user table in the data base 
+	private Cart cart;
+	public Cart getCart() {
+		return cart;
+	}
+	public void setCart(Cart cart) {
+		this.cart = cart;
+	}
+
+
 	@Column(name="first_name")
 	@NotBlank(message="please enter your first name ")
 	private String firstName;

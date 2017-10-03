@@ -23,10 +23,8 @@ public interface UserDao {
 	List<User> listActiveUsers();
 	//getting the user name password from the user table 
 	boolean getUserDetails(String email,String password);
-	
-	
 	//getting the email
-	User getEmailId(String email);
+	User getByEmail(String email);
 	//getting the user id 
 	List<User> getUserId(int id);
 	//getting the users password 
